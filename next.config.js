@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
 
-module.exports = nextConfig
+  images: {
+    domains: ["source.unsplash.com", "images.microcms-assets.io"],
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: "/blog/blog-detail",
+        destination: "/blog-detail",
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;

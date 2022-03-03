@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["tailwindcss"],
+  "extends": ["plugin:tailwindcss/recommended", "next/core-web-vitals"],
+  "settings": {
+    "tailwindcss": {
+      //レスポンシブ系のクラスネーム(sm: md:など)をまとめる
+      "groupByResponsive": true,
+      //自作のクラスネームの許可↓
+      "whitelist": []
+    }
+  }
 }
