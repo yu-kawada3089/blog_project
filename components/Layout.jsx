@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 import Head from "next/head";
 import Link from "next/link";
 
@@ -7,25 +8,25 @@ import { DropdownMenu } from "./DropdownMenu";
 // サイト全体を通して共通する箇所
 export const Layout = ({ title = "HP by Next.js", children }) => {
   return (
-    <div className="font-mPlus min-h-screen bg-opacity-10 text-gray-800 bg-[#ecc39c] ">
+    <div className="min-h-screen font-mPlus text-gray-800 bg-[#ecc39c] bg-opacity-10 ">
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/owl_icon.svg" />
       </Head>
 
       <header>
-        <div className="flex justify-center items-center bg-hero-img h-20 md:h-32 w-full">
-          <div className="flex justify-between lg:max-w-6xl w-[90%] ">
+        <div className="flex justify-center items-center w-full h-20 bg-hero-img md:h-32">
+          <div className="flex justify-between w-[90%] lg:max-w-6xl ">
             <Link href="/">
-              <a className="font-maru text-2xl md:text-5xl  text-[#252a29f5] my-auto lg:ml-16">けやきのほんだな</a>
+              <a className="my-auto font-maru text-2xl  text-[#252a29f5] md:text-5xl lg:ml-16">けやきのほんだな</a>
             </Link>
             {/* スマホ上で表示される部分 */}
             <DropdownMenu />
             {/* pc上で表示される部分 */}
-            <nav className="hidden lg:flex h-14 space-x-8  ">
-              <Link href="/">
-                <div className="hover:bg-gray-400  hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover:cursor-pointer px-3 py-2 rounded ">
-                  <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <nav className="hidden space-x-8 h-14 lg:flex  ">
+              <Link href="/" passHref>
+                <div className="py-2  px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow hover:cursor-pointer ">
+                  <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -36,9 +37,9 @@ export const Layout = ({ title = "HP by Next.js", children }) => {
                   <a>Home</a>
                 </div>
               </Link>
-              <Link href="/blog-detail">
-                <div className="hover:bg-gray-400 hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover: cursor-pointer px-3 py-2 rounded">
-                  <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <Link href="/blog-detail" passHref>
+                <div className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer">
+                  <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -56,11 +57,11 @@ export const Layout = ({ title = "HP by Next.js", children }) => {
         </div>
       </header>
       <div className="border-b-2 "></div>
-      <div className="flex flex-1 justify-center items-center flex-col w-screen">{children}</div>
+      <div className="flex flex-col flex-1 justify-center items-center w-screen">{children}</div>
 
       <footer>
-        <div className="flex flex-col justify-center h-20 w-auto bg-footer-img">
-          <p className="text-white text-center">© 2021 けやきのほんだな</p>
+        <div className="flex flex-col justify-center w-auto h-20 bg-footer-img">
+          <p className="text-center text-white">© 2021 けやきのほんだな</p>
         </div>
       </footer>
     </div>

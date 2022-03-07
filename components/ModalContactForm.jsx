@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useForm } from "react-hook-form";
@@ -60,10 +61,10 @@ export const ModalContactForm = (props) => {
   return (
     <>
       <div
-        className="hover:bg-gray-400 hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover: cursor-pointer px-3 py-2 rounded text-sm md:text-base"
+        className="hover: py-2 px-3 text-sm hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer md:text-base"
         onClick={openModal}
       >
-        <svg className="w-6 h-6 mx-auto " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg className="mx-auto w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -75,8 +76,8 @@ export const ModalContactForm = (props) => {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 z-50 overflow-y-auto" onClose={closeModal}>
-          <div className="min-h-screen px-4 text-center">
+        <Dialog as="div" className="overflow-y-auto fixed inset-0 z-50" onClose={closeModal}>
+          <div className="px-4 min-h-screen text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -102,12 +103,12 @@ export const ModalContactForm = (props) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-xl p-6 my-8 overflow-hidden text-center align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block overflow-hidden p-6 my-8 w-full max-w-xl text-center align-middle bg-white rounded-2xl shadow-xl transition-all">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                   お問い合わせ
                   {/* モーダル展開後の表示 */}
                 </Dialog.Title>
-                <div className="mt-2 p-2">
+                <div className="p-2 mt-2">
                   <p className="text-sm leading-6 text-gray-500">
                     当サイトのご訪問ありがとうございました！
                     <br />
@@ -120,11 +121,11 @@ export const ModalContactForm = (props) => {
                   <div className="flex flex-col mt-8 ">
                     <label className="text-left" htmlFor="name">
                       <div>
-                        お名前<span className="text-red-500 ml-4">必須</span>
+                        お名前<span className="ml-4 text-red-500">必須</span>
                         <p className="text-red-500">{errors.Name?.message}</p>
                       </div>
                       <input
-                        className="w-2/3 my-1 mt-2 border-b-2 transition duration-500 focus:outline-none hover:border-green-100 hover:bg-green-100"
+                        className="my-1 mt-2 w-2/3 hover:bg-green-100 border-b-2 hover:border-green-100 focus:outline-none transition duration-500"
                         {...register("Name")}
                         id="name"
                       />
@@ -133,10 +134,10 @@ export const ModalContactForm = (props) => {
                   <div className="flex flex-col mt-5">
                     <label className="text-left" htmlFor="address">
                       <div>
-                        メールアドレス<span className="text-gray-500 ml-4">任意</span>
+                        メールアドレス<span className="ml-4 text-gray-500">任意</span>
                       </div>
                       <input
-                        className="w-2/3 my-1 mt-2 border-b-2 transition duration-500 focus:outline-none hover:border-green-100 hover:bg-green-100"
+                        className="my-1 mt-2 w-2/3 hover:bg-green-100 border-b-2 hover:border-green-100 focus:outline-none transition duration-500"
                         {...register("Address")}
                         id="address"
                       />
@@ -145,20 +146,20 @@ export const ModalContactForm = (props) => {
                   <div className="flex flex-col mt-5">
                     <div className="text-left">メッセージ内容</div>
                     <p className="text-red-500">{errors.Message?.message}</p>
-                    <textarea className="w-full my-1 mt-3 border-2 rounded-md focus:outline-none" rows={7} defaultValue="" {...register("Message")} />
+                    <textarea className="my-1 mt-3 w-full rounded-md border-2 focus:outline-none" rows={7} defaultValue="" {...register("Message")} />
                   </div>
                   <button
-                    className="my-2 inline-flex justify-center px-4 py-2  text-green-900 bg-green-100 border border-transparent rounded-md hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
+                    className="inline-flex justify-center py-2 px-4 my-2  text-green-900 bg-green-100 hover:bg-green-200 rounded-md border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     type="submit"
                   >
                     送信する
                   </button>
                 </form>
 
-                <div className="flex mt-4 justify-end">
+                <div className="flex justify-end mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm text-green-900 bg-green-100 border border-transparent rounded-md hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
+                    className="inline-flex justify-center py-2 px-4 text-sm text-green-900 bg-green-100 hover:bg-green-200 rounded-md border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     閉じる

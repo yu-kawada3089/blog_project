@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 import { Fragment, useState } from "react";
 import { NextLink } from "./utils/NextLink";
 import { Dialog, Transition } from "@headlessui/react";
@@ -18,7 +19,7 @@ export const DropdownMenu = () => {
   return (
     <>
       <div
-        className="hover:bg-gray-400 hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover: cursor-pointer px-3 py-2 rounded lg:hidden"
+        className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer lg:hidden"
         onClick={openModal}
       >
         <svg className="w-6 h-8 md:w-10 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +28,7 @@ export const DropdownMenu = () => {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="fixed inset-y-0 right-0 z-50 overflow-y-auto" onClose={closeModal}>
+        <Dialog as="div" className="overflow-y-auto fixed inset-y-0 right-0 z-50" onClose={closeModal}>
           <div className="min-h-screen  text-center">
             <Transition.Child
               as={Fragment}
@@ -54,15 +55,15 @@ export const DropdownMenu = () => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-xl overflow-hidden text-center  transition-all transform bg-white shadow-xl ">
+              <div className="inline-block overflow-hidden w-full max-w-xl text-center  bg-white shadow-xl transition-all">
                 <Dialog.Title as="h3" className="p-4 font-medium leading-6 text-gray-900">
                   Menu
                   {/* モーダル展開後の表示 */}
                 </Dialog.Title>
-                <div className="flex flex-col items-center mt-2 space-y-4 mb-6 rounded ">
+                <div className="flex flex-col items-center mt-2 mb-6 space-y-4 rounded ">
                   <NextLink href="/" className="block border-none outline-none ">
-                    <div className=" hover:bg-gray-400 hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover:cursor-pointer px-3 py-2 rounded ">
-                      <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div className=" py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow hover:cursor-pointer ">
+                      <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -74,8 +75,8 @@ export const DropdownMenu = () => {
                     </div>
                   </NextLink>
                   <NextLink href="blog-detail" className="block text-sm">
-                    <div className="hover:bg-gray-400 hover:text-gray-50 hover:bg-opacity-75 hover:shadow hover: cursor-pointer px-3 py-2 rounded ">
-                      <svg className="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer ">
+                      <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -88,28 +89,28 @@ export const DropdownMenu = () => {
                   </NextLink>
                   <ModalContactForm className="block" />
                 </div>
-                <div className="w-60 h-auto border-t-2  bg-white  relative">
-                  <h3 className="pt-4 pl-3 text-left font-bold  ">このサイトについて</h3>
-                  <div className="border-b-8 border-green-500/40 w-[62%] ml-3 absolute top-8 "></div>
-                  <p className="py-4 px-3 leading-5 text-sm text-left ">
+                <div className="relative w-60 h-auto  bg-white  border-t-2">
+                  <h3 className="pt-4 pl-3 font-bold text-left  ">このサイトについて</h3>
+                  <div className="absolute top-8 ml-3 w-[62%] border-b-8 border-green-500/40 "></div>
+                  <p className="py-4 px-3 text-sm leading-5 text-left ">
                     管理人である<span className="font-bold"> 「かわゆー」 </span>
                     が、読書を通じて得た「学び」や「気づき」を記事にして紹介していく書評ブログです。
                   </p>
                 </div>
-                <div className="flex flex-col w-60 h-auto border-t-2 bg-white  text-left relative">
-                  <h3 className="pt-4 px-3 font-bold text-left ">管理人</h3>
-                  <div className="border-b-8 border-green-500/40 w-[21%] ml-3 absolute top-8 "></div>
+                <div className="flex relative flex-col w-60 h-auto text-left  bg-white border-t-2">
+                  <h3 className="px-3 pt-4 font-bold text-left ">管理人</h3>
+                  <div className="absolute top-8 ml-3 w-[21%] border-b-8 border-green-500/40 "></div>
 
                   <div className="flex flex-col items-center ">
-                    <div className="w-40 py-16 m-2 border bg-white rounded-full text-center ">イメージ</div>
+                    <div className="py-16 m-2 w-40 text-center bg-white rounded-full border ">イメージ</div>
                   </div>
                   <h3 className="pt-2 pl-3">かわゆー</h3>
                   <p className="p-3 text-sm">大阪在住の無類の散歩好き。すぐどこか行く人。趣味はゲームとサウナ。</p>
                 </div>
 
-                <div className="flex mt-4 justify-end">
+                <div className="flex justify-end mt-4">
                   <button
-                    className="my-2 inline-flex justify-center px-4 py-2  text-green-900 bg-green-100 border border-transparent rounded-md text-sm hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500"
+                    className="inline-flex justify-center py-2 px-4 my-2  text-sm text-green-900 bg-green-100 hover:bg-green-200 rounded-md border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     閉じる
