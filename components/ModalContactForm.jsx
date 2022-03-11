@@ -76,8 +76,8 @@ export const ModalContactForm = (props) => {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="overflow-y-auto fixed inset-0 z-50" onClose={closeModal}>
-          <div className="px-4 min-h-screen text-center">
+        <Dialog as="div" className="overflow-y-auto fixed inset-0 z-50  " onClose={closeModal}>
+          <div className=" px-4 min-h-screen text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -87,7 +87,7 @@ export const ModalContactForm = (props) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-40" />
+              <Dialog.Overlay className="fixed inset-0 -z-20 bg-gray-500 bg-opacity-40" />
             </Transition.Child>
 
             {/* モーダルの配置をブラウザに教える */}

@@ -258,7 +258,7 @@ export default function BlogId(props) {
 //静的生成のためのパス指定。
 export const getStaticPaths = async () => {
   const key = {
-    headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
+    headers: { "X-MICROCMS-API-KEY": process.env.NAME },
   };
   const data = await fetch("https://keyakiblog.microcms.io/api/v1/blog-data", key);
   const blogData = await data.json();
@@ -274,7 +274,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const key = {
-    headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
+    headers: { "X-MICROCMS-API-KEY": process.env.NAME },
   };
   const data = await fetch("https://keyakiblog.microcms.io/api/v1/blog-data/" + id, key)
     .then((res) => res.json())
