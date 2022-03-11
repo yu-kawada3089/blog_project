@@ -12,7 +12,7 @@ const fetcher = async (args, key) => {
 
 export const usePosts = () => {
   const key = {
-    headers: { "X-MICROCMS-API-KEY": process.env.NAME },
+    headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
   };
 
   const { data: posts, error } = useSWR(["https://keyakiblog.microcms.io/api/v1/blog-data", key], fetcher);
