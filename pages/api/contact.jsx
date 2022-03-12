@@ -14,7 +14,7 @@ const contact = async (req, res) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "X-WRITE-API-KEY": WRITE_API_KEY,
+      "X-WRITE-API-KEY": NEXT_PUBLIC_API_KEY,
     },
     body: JSON.stringify(req.body),
   })
