@@ -209,7 +209,7 @@ export default function BlogId(props) {
                   読む前におさえたいポイント
                 </h2>
               </div>
-              <div className="flex flex-row　mt-8 text-sm leading-8 md:text-base">
+              <div className="flex flex-row mt-8 text-sm leading-8 md:text-base">
                 <ul className="mt-8 space-y-4">
                   <li>・著者</li>
                   <li>・出版日</li>
