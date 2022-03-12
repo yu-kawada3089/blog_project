@@ -1,7 +1,7 @@
 import { isContact } from "../../components/utils/TypeGuardUtils";
 
 const contact = async (req, res) => {
-  const WRITE_API_KEY = process.env.WRITE_API_KEY;
+  const WRITE_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   console.log("contact通過");
 
@@ -14,7 +14,7 @@ const contact = async (req, res) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "X-WRITE-API-KEY": NEXT_PUBLIC_API_KEY,
+      "X-MICROCMS-API-KEY": WRITE_API_KEY,
     },
     body: JSON.stringify(req.body),
   })
