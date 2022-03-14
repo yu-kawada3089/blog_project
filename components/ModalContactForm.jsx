@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+// const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 
 const validationSchema = yup.object().shape({
   Name: yup.string().required("名前は必ず入力して下さい。"),
@@ -40,7 +40,7 @@ export const ModalContactForm = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      await fetch(baseUrl + "/api/contact", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
