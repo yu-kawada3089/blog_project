@@ -1,6 +1,7 @@
 import { isContact } from "../../components/utils/TypeGuardUtils";
 
 const contact = async (req, res) => {
+  console.log({ req, res });
   const WRITE_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   console.log("contact通過");
@@ -28,7 +29,7 @@ const contact = async (req, res) => {
 
   res.status(200).json({ message: "OK" });
 
-  res.end("Contact enabled");
+  // res.end("Contact enabled");
 };
 
 export default contact;
