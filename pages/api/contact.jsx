@@ -19,7 +19,7 @@ const contact = async (req, res) => {
     body: JSON.stringify(req.body),
   })
     .then(() => "Created")
-    .catch(() => "error");
+    .catch(() => null);
 
   //cms側で正しく作成されたかチェック
   if (content !== "Created") {
