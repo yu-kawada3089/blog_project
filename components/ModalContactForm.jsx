@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
 
 // const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 
@@ -40,22 +41,38 @@ export const ModalContactForm = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-        },
-        body: JSON.stringify(data),
-      }).then((res) => {
-        console.log({ res });
-        if (!res.ok) {
-          throw Error(`${res.status} ${res.statusText}`);
-        }
-      });
+      // await fetch("/api/contact", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json; charset=utf-8",
+      //   },
+      //   body: JSON.stringify(data),
+      // }).then((res) => {
+      //   if (!res.ok) {
+      //     throw Error(`${res.status} ${res.statusText}`);
+      //   }
+      // });
 
-      void router.push("/contact/success");
+      await toast.promise(
+        fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          body: JSON.stringify(data),
+        }).then((res) => {
+          if (!res.ok) {
+            throw Error(`${res.status} ${res.statusText}`);
+          }
+        }),
+        {
+          loading: "送信しています、、、",
+          success: "送信完了しました！",
+          error: "送信に失敗しました、、、",
+        }
+      );
     } catch (err) {
-      void router.push("/contact/error");
+      console.log({ err });
     }
   };
 
@@ -166,6 +183,7 @@ export const ModalContactForm = (props) => {
                     閉じる
                   </button>
                 </div>
+                <Toaster />
               </div>
             </Transition.Child>
           </div>

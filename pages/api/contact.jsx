@@ -1,10 +1,10 @@
 import { isContact } from "../../components/utils/TypeGuardUtils";
 
 const contact = async (req, res) => {
-  console.log({ req, res });
+  // console.log({ req, res });
   const WRITE_API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
-  console.log("contact通過");
+  // console.log("contact通過");
 
   //クエリとapiキーのチェック
   if (!isContact(req.body) || typeof WRITE_API_KEY === "undefined") {
