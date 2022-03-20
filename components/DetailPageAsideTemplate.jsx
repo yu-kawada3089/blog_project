@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback } from "react";
 import { useRouter } from "next/router";
@@ -105,10 +106,10 @@ export const DetailPageAsideTemplate = (props) => {
           <div className="absolute top-8 ml-6 w-[19%] border-b-8 border-green-500/40 "></div>
 
           <div className="col-start-1 col-end-2 row-start-2 row-end-7 justify-self-center">
-            <Image className={props.introductionInview ? "mt-5 pb-10" : "mt-5 pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-            <Image className={props.recommendationInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-            <Image className={props.checklistInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-            <Image className={props.impressionsInview ? "pb-9" : "pb-9 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+            <img className={props.introductionInview ? "mt-5 pb-10" : "mt-5 pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+            <img className={props.recommendationInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+            <img className={props.checklistInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+            <img className={props.impressionsInview ? "pb-9" : "pb-9 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
           </div>
           <ul className="col-start-2 col-end-7 row-start-2 row-end-7">
             <li

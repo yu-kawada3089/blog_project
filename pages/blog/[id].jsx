@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable tailwindcss/migration-from-tailwind-2 */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useState } from "react";
@@ -143,10 +144,10 @@ export default function BlogId(props) {
             <div className="grid grid-cols-6 grid-rows-6 w-80 h-auto bg-white lg:hidden">
               <h3 className="col-start-1 col-end-7 row-start-1 row-end-2 px-4 pt-4 mb-2 text-xl font-bold md:pl-10">目次</h3>
               <div className="col-start-1 col-end-2 row-start-2 row-end-7 justify-self-center md:pl-8">
-                <Image className={introductionInview ? "mt-5 pb-10" : "mt-5 pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-                <Image className={recommendationInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-                <Image className={checklistInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
-                <Image className={impressionsInview ? "pb-9" : "pb-9 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+                <img className={introductionInview ? "mt-5 pb-10" : "mt-5 pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+                <img className={recommendationInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+                <img className={checklistInview ? "pb-10" : "pb-10 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
+                <img className={impressionsInview ? "pb-9" : "pb-9 opacity-0"} src="/leaf_icon.svg" width="16" height="16" alt="" />
               </div>
               <ul className="col-start-2 col-end-7 row-start-2 row-end-7 md:pl-6">
                 <li
