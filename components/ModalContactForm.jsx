@@ -41,18 +41,6 @@ export const ModalContactForm = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json; charset=utf-8",
-      //   },
-      //   body: JSON.stringify(data),
-      // }).then((res) => {
-      //   if (!res.ok) {
-      //     throw Error(`${res.status} ${res.statusText}`);
-      //   }
-      // });
-
       await toast.promise(
         fetch("/api/contact", {
           method: "POST",
