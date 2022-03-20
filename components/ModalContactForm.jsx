@@ -29,6 +29,7 @@ export const ModalContactForm = (props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     // フォーム内の要素を上から検証して最初に見つけたエラーを返す
@@ -37,7 +38,6 @@ export const ModalContactForm = (props) => {
     mode: "onSubmit",
     resolver: yupResolver(validationSchema),
   });
-  const router = useRouter();
 
   const onSubmit = async (data) => {
     try {
@@ -61,6 +61,8 @@ export const ModalContactForm = (props) => {
       );
     } catch (err) {
       console.log({ err });
+    } finally {
+      reset();
     }
   };
 
