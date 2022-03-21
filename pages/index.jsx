@@ -23,8 +23,6 @@ export default function SwrTests(props) {
     setInitialToggle,
     setCategoryFlag,
   } = props;
-  console.log(`"knowledgeToggle" ${knowledgeToggle}`);
-  console.log(`"healthToggle" ${healthToggle}`);
 
   const [plan, setPlan] = useState("全ての記事");
 
@@ -115,8 +113,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       initialToggle === false && checked
-                        ? "rounded bg-[#000000c4] bg-opacity-80 text-white px-4 py-2"
-                        : "rounded border-[#000000c4] bg-opacity-80 px-4 py-2 hover:bg-[#000000c4] hover:rounded hover:text-white hover:border-none"
+                        ? "rounded bg-[#000000c4] bg-opacity-80 text-white px-4 py-2 outline-none"
+                        : "rounded border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-[#000000c4] hover:rounded hover:text-white hover:border-none"
                     }
                     onClick={() => handleAllCategory()}
                   >
@@ -129,8 +127,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       knowledgeToggle || checked
-                        ? "rounded bg-yellow-400 bg-opacity-80 text-white px-4 py-2 tracking-wide"
-                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 hover:bg-yellow-400 hover:rounded hover:text-white hover:border-none tracking-wide"
+                        ? "rounded bg-yellow-400 bg-opacity-80 text-white px-4 py-2 outline-none tracking-wide"
+                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-yellow-400 hover:rounded hover:text-white hover:border-none tracking-wide"
                     }
                     onClick={() => handleSortedKnowledge()}
                   >
@@ -143,8 +141,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       healthToggle || checked
-                        ? "rounded bg-red-400 bg-opacity-80 text-white px-4 py-2 tracking-wide"
-                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 hover:bg-red-400 hover:rounded hover:text-white hover:border-none tracking-wide"
+                        ? "rounded bg-red-400 bg-opacity-80 text-white px-4 py-2 outline-none tracking-wide"
+                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-red-400 hover:rounded hover:text-white hover:border-none tracking-wide"
                     }
                     onClick={() => handleSortedHealth()}
                   >
@@ -157,8 +155,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       timeToggle || checked
-                        ? "rounded bg-green-400 bg-opacity-80 text-white px-4 py-2 tracking-wide"
-                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 hover:bg-green-400 hover:rounded hover:text-white hover:border-none tracking-wide"
+                        ? "rounded bg-green-400 bg-opacity-80 text-white px-4 py-2 outline-none tracking-wide"
+                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-green-400 hover:rounded hover:text-white hover:border-none tracking-wide"
                     }
                     onClick={() => handleSortedTime()}
                   >
@@ -171,8 +169,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       philosophyToggle || checked
-                        ? "rounded bg-blue-400 bg-opacity-80 text-white px-4 py-2"
-                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 hover:bg-blue-400 hover:rounded hover:text-white hover:border-none"
+                        ? "rounded bg-blue-400 bg-opacity-80 text-white px-4 py-2 outline-none"
+                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-blue-400 hover:rounded hover:text-white hover:border-none"
                     }
                     onClick={() => handleSortedPhilosophy()}
                   >
