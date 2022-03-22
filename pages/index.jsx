@@ -169,8 +169,8 @@ export default function SwrTests(props) {
                   <button
                     className={
                       philosophyToggle || checked
-                        ? "rounded bg-blue-400 bg-opacity-80 text-white px-4 py-2 outline-none"
-                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 outline-none hover:bg-blue-400 hover:rounded hover:text-white hover:border-none"
+                        ? "rounded bg-blue-400 bg-opacity-80 text-white px-4 py-2 focus:outline-none"
+                        : "border-[#000000c4] bg-opacity-80 px-4 py-2 focus:outline-none hover:bg-blue-400 hover:rounded hover:text-white hover:border-none"
                     }
                     onClick={() => handleSortedPhilosophy()}
                   >
