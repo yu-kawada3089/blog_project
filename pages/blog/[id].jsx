@@ -278,7 +278,7 @@ export const getStaticProps = async (context) => {
   let data;
 
   if (context.preview) {
-    const slug = context.params?.slug;
+    const slug = context.params?.id;
     const draftKey = context.previewData?.draftKey;
 
     data = await fetch(`https://keyakiblog.microcms.io/api/v1/blog-data/${slug}${draftKey !== undefined ? `?draftKey=${draftKey}` : ""}`, {
