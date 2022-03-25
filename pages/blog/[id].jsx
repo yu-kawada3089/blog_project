@@ -15,6 +15,7 @@ import { Profile } from "../../components/utils/Profile";
 export default function BlogId(props) {
   const router = useRouter();
   const { books, setKnowledgeToggle, setHealthToggle, setTimeToggle, setInitialToggle, categoryFlag, setCategoryFlag, setPhilosophyToggle } = props;
+  console.log({ books });
 
   const htmlParsedIntroData = parse(books.intro);
 
@@ -267,22 +268,35 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
 //データをテンプレートに受け渡す部分の処理。
 export const getStaticProps = async (context) => {
-  const id = context.params.id;
-  const key = {
-    headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
-  };
-  const data = await fetch("https://keyakiblog.microcms.io/api/v1/blog-data/" + id, key)
-    .then((res) => res.json())
-    .catch(() => null);
+  console.log({ context });
+  let data;
+
+  if (context.preview) {
+    const slug = context.params?.slug;
+    const draftKey = context.previewData?.draftKey;
+
+    data = await fetch(`https://keyakiblog.microcms.io/api/v1/blog-data/${slug}${draftKey !== undefined ? `?draftKey=${draftKey}` : ""}`, {
+      headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY || "" },
+    }).then((res) => res.json());
+  } else if (!context.preview) {
+    const id = context.params.id;
+    const key = {
+      headers: { "X-MICROCMS-API-KEY": process.env.NEXT_PUBLIC_API_KEY },
+    };
+    data = await fetch(`https://keyakiblog.microcms.io/api/v1/blog-data/` + id, key)
+      .then((res) => res.json())
+      .catch(() => null);
+  }
   return {
     props: {
       books: data,
     },
+    revalidate: 1,
   };
 };

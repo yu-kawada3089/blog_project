@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { RadioGroup } from "@headlessui/react";
 
 export default function SwrTests(props) {
+  console.log(props.posts);
   const {
     posts,
     error,
