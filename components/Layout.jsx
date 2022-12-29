@@ -25,7 +25,7 @@ export const Layout = ({ title = "HP by Next.js", children }) => {
             {/* pc上で表示される部分 */}
             <nav className="hidden space-x-8 h-14 lg:flex  ">
               <Link href="/" passHref>
-                <div className="py-2  px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow hover:cursor-pointer ">
+                <div className="py-2 px-3 hover:text-gray-50 hover:bg-purple-500 hover:bg-opacity-50 rounded hover:shadow hover:cursor-pointer ">
                   <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
                       strokeLinecap="round"
@@ -38,7 +38,7 @@ export const Layout = ({ title = "HP by Next.js", children }) => {
                 </div>
               </Link>
               <Link href="/blog-detail" passHref>
-                <div className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer">
+                <div className="py-2 px-3 hover:text-gray-50 hover:bg-purple-500 hover:bg-opacity-50 rounded hover:shadow hover:cursor-pointer">
                   <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path
                       strokeLinecap="round"

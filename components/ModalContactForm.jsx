@@ -69,7 +69,7 @@ export const ModalContactForm = (props) => {
   return (
     <>
       <div
-        className="hover: py-2 px-3 text-sm hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer md:text-base"
+        className="hover: py-2 px-3 text-sm hover:text-gray-50 hover:bg-purple-500 hover:bg-opacity-50 rounded hover:shadow cursor-pointer md:text-base"
         onClick={openModal}
       >
         <svg className="mx-auto w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

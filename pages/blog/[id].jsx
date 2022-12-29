@@ -120,8 +120,8 @@ export default function BlogId(props) {
               <button
                 className={
                   books.category === "time"
-                    ? "p-3 rounded bg-purple-400 text-gray-100 mx-2"
-                    : "p-3 rounded border-2 mx-2 hover:p-3 hover:bg-purple-400 hover:text-gray-100"
+                    ? "p-3 rounded bg-green-400 text-gray-100 mx-2"
+                    : "p-3 rounded border-2 mx-2 hover:p-3 hover:bg-green-400 hover:text-gray-100"
                 }
                 onClick={handleIndexTime}
               >
@@ -206,7 +206,7 @@ export default function BlogId(props) {
               <div className="mt-8 font-noto text-sm leading-8 md:text-base">{htmlParsedRecommendData}</div>
             </div>
             <div className="px-4 mt-10 md:px-10 md:pt-10" ref={ref3}>
-              <div className=" relative border-b-8 border-green-500 border-opacity-40">
+              <div className="relative border-b-8 border-green-500 border-opacity-40">
                 <h2 id="checklist" className="absolute -top-4 text-lg font-bold md:-top-5 md:text-2xl ">
                   読む前におさえたいポイント
                 </h2>

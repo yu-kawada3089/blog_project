@@ -1,12 +1,14 @@
-import { MainAsideTemplate } from "../components/MainAsideTemplate";
-import { ReturnToButton } from "../components/atoms/button/ReturnTopButton";
-import { BookCard } from "../components/BookCard";
-import { Layout } from "../components/Layout";
+import { MainAsideTemplate } from "../../../components/MainAsideTemplate";
+import { ReturnToButton } from "../../../components/atoms/button/ReturnTopButton";
+import { BookCard } from "../../../components/BookCard";
+import { Layout } from "../../../components/Layout";
 import { useState, useEffect, useCallback } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { Pagination } from "../components/utils/Pagination";
+import { Pagination } from "../../../components/utils/Pagination";
+import { useRouter } from "next/router";
+import { client } from "../../../components/utils/client";
 
-export default function SwrTests(props) {
+export default function TestPage(props) {
   const {
     posts,
     error,
@@ -25,13 +27,15 @@ export default function SwrTests(props) {
     setCategoryFlag,
   } = props;
 
-  const devideNumber = 6;
+  const router = useRouter();
+  console.log(props.blogData);
 
-  console.log(posts);
+  const devideNumber = 6;
 
   const [plan, setPlan] = useState("全ての記事");
 
   const handleAllCategory = useCallback(() => {
+    router.push("/");
     setArticles(posts?.contents);
     setKnowledgeToggle(false);
     setHealthToggle(false);
@@ -39,9 +43,10 @@ export default function SwrTests(props) {
     setPhilosophyToggle(false);
     setInitialToggle(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [posts?.contents]);
+  }, [articles?.contents]);
 
   const handleSortedKnowledge = () => {
+    router.push("/");
     const knowledgeArray = posts?.contents.filter((post) => post.category === "knowledge");
     setArticles(knowledgeArray);
     setKnowledgeToggle(true);
@@ -51,6 +56,7 @@ export default function SwrTests(props) {
     setInitialToggle(true);
   };
   const handleSortedHealth = () => {
+    router.push("/");
     const healthArray = posts?.contents.filter((post) => post.category === "health");
     setArticles(healthArray);
     setHealthToggle(true);
@@ -60,6 +66,7 @@ export default function SwrTests(props) {
     setInitialToggle(true);
   };
   const handleSortedTime = () => {
+    router.push("/");
     const timeArray = posts?.contents.filter((post) => post.category === "time");
     setArticles(timeArray);
     setTimeToggle(true);
@@ -69,6 +76,7 @@ export default function SwrTests(props) {
     setInitialToggle(true);
   };
   const handleSortedPhilosophy = () => {
+    router.push("/");
     const philosophyArray = posts?.contents.filter((post) => post.category === "philosophy");
     setArticles(philosophyArray);
     setPhilosophyToggle(true);
@@ -79,9 +87,9 @@ export default function SwrTests(props) {
   };
 
   useEffect(() => {
-    setArticles(posts?.contents);
+    setArticles(props.blogData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [posts]);
+  }, [props.blogData]);
   useEffect(() => {
     setCategoryFlag("");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,6 +98,7 @@ export default function SwrTests(props) {
     if (knowledgeToggle) {
       const knowledgeArray = posts?.contents.filter((post) => post.category === "knowledge");
       setArticles(knowledgeArray);
+      console.log({ articles });
     } else if (healthToggle) {
       const healthArray = posts?.contents.filter((post) => post.category === "health");
       setArticles(healthArray);
@@ -103,9 +112,10 @@ export default function SwrTests(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!error && !posts) return <div className="">ローディング中...</div>;
-  if (error) return <div className="">エラーが発生したため、時間を置いて再度接続をお試しください。</div>;
-  if (posts.length === 0) return <div className="">データは空です</div>;
+  // if (!error && !posts) return <div className="">ローディング中...</div>;
+  // if (error) return <div className="">エラーが発生したため、時間を置いて再度接続をお試しください。</div>;
+  // if (posts.length === 0) return <div className="">データは空です</div>;
+  console.log(props.blogData);
 
   return (
     <Layout title="けやきのほんだな">
@@ -190,12 +200,16 @@ export default function SwrTests(props) {
             </RadioGroup>
           </div>
           <div className="flex flex-wrap justify-center mt-4 md:justify-start md:mt-8 md:mb-16 lg:mr-14 lg:ml-10">
-            {articles?.length > devideNumber
-              ? articles?.slice(0, devideNumber).map((article) => <BookCard key={article.id} bookData={article} />)
-              : articles?.map((article) => <BookCard key={article.id} bookData={article} />)}
+            {props.blogData.map((article) => (
+              <BookCard key={article.id} bookData={article} />
+            ))}
           </div>
           <Pagination
-            totalCount={articles?.length ?? 1}
+            totalCount={
+              knowledgeToggle === false && healthToggle === false && timeToggle === false && philosophyToggle === false
+                ? props.totalCount
+                : articles?.length
+            }
             articles={articles}
             setArticles={setArticles}
             devideNumber={devideNumber}
@@ -208,8 +222,35 @@ export default function SwrTests(props) {
         </main>
         <MainAsideTemplate />
       </div>
-
+      {console.log(articles)}
       {/* <ReturnToButton/> */}
     </Layout>
   );
 }
+
+export const getStaticPaths = async () => {
+  const devideNumber = 6;
+  const repos = await client.get({ endpoint: "blog-data" });
+
+  const range = (start, end) => [...Array(end - start + 1)].map((_, i) => start + i);
+
+  const paths = range(1, Math.ceil(repos.totalCount / devideNumber)).map((repo) => `/page/time/${repo}`);
+
+  return { paths, fallback: false };
+};
+export const getStaticProps = async (ctx) => {
+  const devideNumber = 6;
+  const id = ctx.params.id;
+  // console.log(ctx.params);
+  const data = await client.get({
+    endpoint: "blog-data",
+    queries: { offset: (id - 1) * devideNumber, limit: devideNumber, filters: "category[equals]time" },
+  });
+
+  return {
+    props: {
+      blogData: data.contents,
+      totalCount: data.totalCount,
+    },
+  };
+};

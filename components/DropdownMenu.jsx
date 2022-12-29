@@ -20,7 +20,7 @@ export const DropdownMenu = () => {
   return (
     <>
       <div
-        className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer lg:hidden"
+        className="hover: py-2 px-3 hover:text-gray-50 hover:bg-purple-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer lg:hidden"
         onClick={openModal}
       >
         <svg className="w-6 h-8 md:w-10 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,7 @@ export const DropdownMenu = () => {
                 </Dialog.Title>
                 <div className="flex flex-col items-center mt-2 mb-6 space-y-4 rounded ">
                   <NextLink href="/" className="block border-none outline-none ">
-                    <div className="py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow hover:cursor-pointer ">
+                    <div className="py-2 px-3 hover:text-gray-50 hover:bg-purple-400 hover:bg-opacity-75 rounded hover:shadow hover:cursor-pointer ">
                       <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
                           strokeLinecap="round"
@@ -76,7 +76,7 @@ export const DropdownMenu = () => {
                     </div>
                   </NextLink>
                   <NextLink href="blog-detail" className="block text-sm">
-                    <div className="hover: py-2 px-3 hover:text-gray-50 hover:bg-gray-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer ">
+                    <div className="hover: py-2 px-3 hover:text-gray-50 hover:bg-purple-400 hover:bg-opacity-75 rounded hover:shadow cursor-pointer ">
                       <svg className="mx-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
                           strokeLinecap="round"

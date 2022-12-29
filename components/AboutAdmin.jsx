@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const AboutAdmin = () => {
   return (
     <>
@@ -14,7 +16,9 @@ export const AboutAdmin = () => {
         <div className="absolute top-8 ml-3 w-[21%] border-b-8 border-green-500/40 "></div>
 
         <div className="flex flex-col items-center ">
-          <div className="py-16 m-2 w-40 text-center bg-white rounded-full border ">イメージ</div>
+          <div className="rounded-full  border-4 ">
+            <Image src="/hornedOwl.png" width={160} height={160} className="py-16 w-40" alt="" />
+          </div>
         </div>
         <h3 className="pt-2 pl-3">かわゆー</h3>
         <p className="p-3 text-sm">大阪在住の無類の散歩好き。すぐどこか行く人。趣味はゲームとサウナ。</p>
